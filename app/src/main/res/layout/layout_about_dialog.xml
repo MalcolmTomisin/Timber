@@ -23,7 +23,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/timber_about_opensource"
+        android:text="@string/joules_about_opensource"
         style="@style/TextAppearance.AppCompat.Body1"
         android:textSize="16sp"
         android:layout_marginTop="15dp"
@@ -76,7 +76,7 @@
         android:clickable="true"
         android:paddingLeft="15dp"
         android:layout_marginTop="25dp"
-        android:text="@string/timber_source"
+        android:text="@string/joules_source"
         android:textSize="16sp"
         style="@style/TextAppearance.AppCompat.Body1"/>
     <TextView
@@ -87,7 +87,7 @@
         android:paddingLeft="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="20dp"
-        android:text="@string/timber_feature_request"
+        android:text="@string/joules_feature_request"
         android:textSize="16sp"
         style="@style/TextAppearance.AppCompat.Body1"/>
 

@@ -15,7 +15,7 @@ import android.util.Pair;
 import android.view.View;
 import android.widget.Toast;
 
-import com.skillslevel.joules.MainActivity;
+import com.skillslevel.joules.activities.MainActivity;
 import com.skillslevel.joules.R;
 
 import java.util.ArrayList;

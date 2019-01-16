@@ -27,7 +27,7 @@ import java.util.WeakHashMap;
 public class MusicPlayer {
     private static final WeakHashMap<Context, ServiceBinder> mConnectionMap;
     private static final long[] sEmptyList;
-    public static ITimberService mService = null;
+    public static IJoulesInterface mService = null;
     private static ContentValues[] mContentValuesCache = null;
 
     static {
@@ -759,7 +759,7 @@ public class MusicPlayer {
 
         @Override
         public void onServiceConnected(final ComponentName className, final IBinder service) {
-            mService = ITimberService.Stub.asInterface(service);
+            mService = IJoulesInterface.Stub.asInterface(service);
             if (mCallback != null) {
                 mCallback.onServiceConnected(className, service);
             }

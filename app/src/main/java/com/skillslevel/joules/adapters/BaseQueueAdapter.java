@@ -16,10 +16,12 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.skillslevel.joules.MusicPlayer;
 import com.skillslevel.joules.R;
+import com.skillslevel.joules.dialogs.AddPlaylistDialog;
 import com.skillslevel.joules.models.Song;
 import com.skillslevel.joules.utils.Helpers;
 import com.skillslevel.joules.utils.JoulesUtil;
 import com.skillslevel.joules.utils.NavigationUtils;
+import com.skillslevel.joules.widgets.MusicVisualizer;
 
 import java.util.List;
 

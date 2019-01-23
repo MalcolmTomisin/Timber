@@ -38,6 +38,7 @@ import com.skillslevel.joules.R;
 import com.skillslevel.joules.adapters.AlbumSongsAdapter;
 import com.skillslevel.joules.dataloaders.AlbumLoader;
 import com.skillslevel.joules.dataloaders.AlbumSongLoader;
+import com.skillslevel.joules.listeners.SimpleTransitionListener;
 import com.skillslevel.joules.models.Album;
 import com.skillslevel.joules.models.Song;
 import com.skillslevel.joules.utils.ATEUtils;
@@ -250,7 +251,7 @@ public class AlbumDetailFragment extends Fragment {
 
         List<Song> songList = AlbumSongLoader.getSongsForAlbum(getActivity(), albumID);
         mAdapter = new AlbumSongsAdapter(getActivity(), songList, albumID);
-        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
+        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(mAdapter);
 
     }
@@ -329,7 +330,7 @@ public class AlbumDetailFragment extends Fragment {
 
     }
 
-    private class EnterTransitionListener extends SimplelTransitionListener {
+    private class EnterTransitionListener extends SimpleTransitionListener {
 
         @TargetApi(21)
         public void onTransitionEnd(Transition paramTransition) {

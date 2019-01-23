@@ -13,7 +13,7 @@ import com.skillslevel.joules.MusicPlayer;
 
 import java.util.Arrays;
 
-import com.skillslevel.joules.MusicPlayer.mService;
+import static com.skillslevel.joules.MusicPlayer.mService;
 
 public class NowPlayingCursor extends AbstractCursor{
     private static final String[] PROJECTION = new String[]{

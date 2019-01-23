@@ -43,7 +43,7 @@ public class MainFragment extends Fragment {
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
         final ActionBar ab = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        ab.setHomeAsUpIndicator(R.drawable.ic_menu);
+        ab.setHomeAsUpIndicator(R.drawable.ic_home_active);
         ab.setDisplayHomeAsUpEnabled(true);
 
 
@@ -64,9 +64,11 @@ public class MainFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if (PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("dark_theme", false)) {
-            ATE.apply(this, "dark_theme");
+            if (this.getActivity() != null)
+            ATE.postApply(this.getActivity(), "dark_theme");
         } else {
-            ATE.apply(this, "light_theme");
+            if (this.getActivity() != null)
+            ATE.postApply(this.getActivity(), "light_theme");
         }
         viewPager.setCurrentItem(mPreferences.getStartPageIndex());
     }

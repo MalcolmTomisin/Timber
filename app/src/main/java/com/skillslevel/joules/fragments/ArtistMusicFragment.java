@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.skillslevel.joules.R;
+import com.skillslevel.joules.adapters.ArtistSongAdapter;
 import com.skillslevel.joules.dataloaders.ArtistSongLoader;
 import com.skillslevel.joules.models.Song;
 import com.skillslevel.joules.utils.Constants;
@@ -62,7 +63,7 @@ public class ArtistMusicFragment extends Fragment {
         songList.add(0, new Song(-1, -1, -1, "dummy", "dummy", "dummy", -1, -1));
 
         mSongAdapter = new ArtistSongAdapter(getActivity(), songList, artistID);
-        songsRecyclerview.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
+        songsRecyclerview.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         songsRecyclerview.setAdapter(mSongAdapter);
     }
 }

@@ -17,6 +17,16 @@ import android.widget.Toast;
 
 import com.skillslevel.joules.activities.MainActivity;
 import com.skillslevel.joules.R;
+import com.skillslevel.joules.activities.NowPlayingActivity;
+import com.skillslevel.joules.activities.PlaylistDetailActivity;
+import com.skillslevel.joules.activities.SearchActivity;
+import com.skillslevel.joules.activities.SettingsActivity;
+import com.skillslevel.joules.fragments.AlbumDetailFragment;
+import com.skillslevel.joules.fragments.ArtistDetailFragment;
+import com.skillslevel.joules.nowplaying.Joules1;
+import com.skillslevel.joules.nowplaying.Joules2;
+import com.skillslevel.joules.nowplaying.Joules3;
+import com.skillslevel.joules.nowplaying.Joules4;
 
 import java.util.ArrayList;
 
@@ -153,16 +163,16 @@ public class NavigationUtils {
 
     public static Fragment getFragmentForNowplayingID(String fragmentID) {
         switch (fragmentID) {
-            case Constants.TIMBER1:
-                return new Timber1();
-            case Constants.TIMBER2:
-                return new Timber2();
-            case Constants.TIMBER3:
-                return new Timber3();
-            case Constants.TIMBER4:
-                return new Timber4();
+            case Constants.JOULES1:
+                return new Joules1();
+            case Constants.JOULES2:
+                return new Joules2();
+            case Constants.JOULES3:
+                return new Joules3();
+            case Constants.JOULES4:
+                return new Joules4();
             default:
-                return new Timber1();
+                return new Joules1();
         }
 
     }

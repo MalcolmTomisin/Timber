@@ -20,6 +20,7 @@ import com.skillslevel.joules.dataloaders.AlbumLoader;
 import com.skillslevel.joules.models.Album;
 import com.skillslevel.joules.utils.PreferencesUtil;
 import com.skillslevel.joules.utils.SortOrder;
+import com.skillslevel.joules.widgets.FastScroller;
 
 import java.util.List;
 
@@ -71,7 +72,7 @@ public class AlbumFragment extends Fragment {
             int spacingInPixels = getActivity().getResources().getDimensionPixelSize(R.dimen.spacing_card_album_grid);
             itemDecoration = new SpacesItemDecoration(spacingInPixels);
         } else {
-            itemDecoration = new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST);
+            itemDecoration = new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL);
         }
         recyclerView.addItemDecoration(itemDecoration);
     }

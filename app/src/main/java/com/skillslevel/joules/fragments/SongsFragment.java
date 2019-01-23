@@ -15,11 +15,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.skillslevel.joules.R;
+import com.skillslevel.joules.activities.BaseActivity;
+import com.skillslevel.joules.adapters.SongsListAdapter;
 import com.skillslevel.joules.dataloaders.SongLoader;
 import com.skillslevel.joules.listeners.MusicStateListener;
 import com.skillslevel.joules.models.Song;
 import com.skillslevel.joules.utils.PreferencesUtil;
 import com.skillslevel.joules.utils.SortOrder;
+import com.skillslevel.joules.widgets.FastScroller;
 
 import java.util.List;
 
@@ -135,7 +138,7 @@ public class SongsFragment extends Fragment implements MusicStateListener {
         protected void onPostExecute(String result) {
             recyclerView.setAdapter(mAdapter);
             if (getActivity() != null)
-                recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
+                recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
 
         }
 

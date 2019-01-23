@@ -14,8 +14,10 @@ import android.widget.TextView;
 
 import com.skillslevel.joules.MusicPlayer;
 import com.skillslevel.joules.R;
+import com.skillslevel.joules.dialogs.AddPlaylistDialog;
 import com.skillslevel.joules.models.Song;
 import com.skillslevel.joules.utils.JoulesUtil;
+import com.skillslevel.joules.utils.NavigationUtils;
 
 import java.util.List;
 

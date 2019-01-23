@@ -22,6 +22,7 @@ import com.skillslevel.joules.R;
 import com.skillslevel.joules.models.Album;
 import com.skillslevel.joules.utils.Helpers;
 import com.skillslevel.joules.utils.JoulesUtil;
+import com.skillslevel.joules.utils.NavigationUtils;
 import com.skillslevel.joules.utils.PreferencesUtil;
 
 import java.util.List;

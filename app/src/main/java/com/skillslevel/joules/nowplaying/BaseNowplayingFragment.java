@@ -31,6 +31,7 @@ import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.skillslevel.joules.MusicPlayer;
 import com.skillslevel.joules.R;
+import com.skillslevel.joules.activities.BaseActivity;
 import com.skillslevel.joules.adapters.BaseQueueAdapter;
 import com.skillslevel.joules.dataloaders.QueueLoader;
 import com.skillslevel.joules.listeners.MusicStateListener;
@@ -46,7 +47,7 @@ import net.steamcrafted.materialiconlib.MaterialIconView;
 
 import java.security.InvalidParameterException;
 
-public class BaseNowplayingFragment implements MusicStateListener {
+public class BaseNowplayingFragment extends Fragment implements MusicStateListener {
     ImageView albumart;
     ImageView shuffle;
     ImageView repeat;
@@ -282,9 +283,11 @@ public class BaseNowplayingFragment implements MusicStateListener {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if (PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("dark_theme", false)) {
-            ATE.apply(this, "dark_theme");
+            if (this.getActivity() != null)
+            ATE.postApply(this.getActivity(), "dark_theme");
         } else {
-            ATE.apply(this, "light_theme");
+            if (this.getActivity() != null)
+            ATE.postApply(this.getActivity(), "light_theme");
         }
     }
 
@@ -617,7 +620,7 @@ public class BaseNowplayingFragment implements MusicStateListener {
             if (result != null) {
                 recyclerView.setAdapter(mAdapter);
                 if (getActivity() != null)
-                    recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
+                    recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
                 recyclerView.scrollToPosition(MusicPlayer.getQueuePosition() - 1);
             }
 

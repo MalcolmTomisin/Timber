@@ -14,7 +14,9 @@ import com.afollestad.appthemeengine.ATE;
 import com.afollestad.appthemeengine.Config;
 import com.afollestad.appthemeengine.prefs.ATECheckBoxPreference;
 import com.afollestad.appthemeengine.prefs.ATEColorPreference;
+import com.afollestad.materialdialogs.color.ColorChooserDialog;
 import com.skillslevel.joules.R;
+import com.skillslevel.joules.activities.SettingsActivity;
 import com.skillslevel.joules.utils.Constants;
 import com.skillslevel.joules.utils.NavigationUtils;
 import com.skillslevel.joules.utils.PreferencesUtil;
@@ -98,7 +100,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         invalidateSettings();
-        ATE.apply(view, mAteKey);
+        ATE.postApply(this.getActivity(), mAteKey);
     }
 
     public void invalidateSettings() {

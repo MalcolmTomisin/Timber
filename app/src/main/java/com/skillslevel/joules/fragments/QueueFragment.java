@@ -15,9 +15,12 @@ import android.view.ViewGroup;
 
 import com.skillslevel.joules.MusicPlayer;
 import com.skillslevel.joules.R;
+import com.skillslevel.joules.activities.BaseActivity;
+import com.skillslevel.joules.adapters.PlayingQueueAdapter;
 import com.skillslevel.joules.dataloaders.QueueLoader;
 import com.skillslevel.joules.listeners.MusicStateListener;
 import com.skillslevel.joules.models.Song;
+import com.skillslevel.joules.widgets.DragSortRecycler;
 
 public class QueueFragment extends Fragment implements MusicStateListener {
     private PlayingQueueAdapter mAdapter;
@@ -32,7 +35,7 @@ public class QueueFragment extends Fragment implements MusicStateListener {
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
         final ActionBar ab = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        ab.setHomeAsUpIndicator(R.drawable.ic_menu);
+        ab.setHomeAsUpIndicator(R.drawable.ic_home_active);
         ab.setDisplayHomeAsUpEnabled(true);
         ab.setTitle(R.string.playing_queue);
 

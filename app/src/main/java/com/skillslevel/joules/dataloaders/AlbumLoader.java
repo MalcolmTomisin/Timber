@@ -26,6 +26,10 @@ public class AlbumLoader {
         return album;
     }
 
+    public static List<Album> getAllAlbums(Context context) {
+        return getAlbumsForCursor(makeAlbumCursor(context, null, null));
+    }
+
 
     public static List <Album> getAlbumsForCursor (Cursor cursor){
         ArrayList arrayList = new ArrayList();
@@ -39,6 +43,14 @@ public class AlbumLoader {
         if (cursor != null)
             cursor.close();
         return arrayList;
+    }
+
+    public static Album getAlbum(Context context, long id) {
+        return getAlbum(makeAlbumCursor(context, "_id=?", new String[]{String.valueOf(id)}));
+    }
+
+    public static List<Album> getAlbums(Context context, String paramString) {
+        return getAlbumsForCursor(makeAlbumCursor(context, "album LIKE ?", new String[]{"%" + paramString + "%"}));
     }
 
     public static Cursor makeAlbumCursor(Context context, String selection, String[] paramArrayOfString){

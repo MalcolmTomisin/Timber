@@ -17,6 +17,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.skillslevel.joules.MusicPlayer;
 import com.skillslevel.joules.R;
+import com.skillslevel.joules.dialogs.AddPlaylistDialog;
 import com.skillslevel.joules.models.Album;
 import com.skillslevel.joules.models.Artist;
 import com.skillslevel.joules.models.Song;
@@ -89,32 +90,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ItemHolder
                                 .resetViewBeforeLoading(true)
                                 .displayer(new FadeInBitmapDisplayer(400))
                                 .build());
-                break;
-            case 2:
-                Artist artist = (Artist) searchResults.get(i);
-                itemHolder.artisttitle.setText(artist.name);
-                String albumNmber = JoulesUtil.makeLabel(mContext, R.plurals.Nalbums, artist.albumCount);
-                String songCount = JoulesUtil.makeLabel(mContext, R.plurals.Nsongs, artist.songCount);
-                itemHolder.albumsongcount.setText(JoulesUtil.makeCombinedString(mContext, albumNmber, songCount));
-                LastFmClient.getInstance(mContext).getArtistInfo(new ArtistQuery(artist.name), new ArtistInfoListener() {
-                    @Override
-                    public void artistInfoSucess(LastfmArtist artist) {
-                        if (artist != null && itemHolder.artistImage != null) {
-                            ImageLoader.getInstance().displayImage(artist.mArtwork.get(1).mUrl, itemHolder.artistImage,
-                                    new DisplayImageOptions.Builder().cacheInMemory(true)
-                                            .cacheOnDisk(true)
-                                            .showImageOnFail(R.drawable.ic_empty_music2)
-                                            .resetViewBeforeLoading(true)
-                                            .displayer(new FadeInBitmapDisplayer(400))
-                                            .build());
-                        }
-                    }
-
-                    @Override
-                    public void artistInfoFailed() {
-
-                    }
-                });
                 break;
             case 10:
                 itemHolder.sectionHeader.setText((String) searchResults.get(i));

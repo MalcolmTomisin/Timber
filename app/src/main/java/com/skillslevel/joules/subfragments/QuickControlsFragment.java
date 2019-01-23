@@ -24,6 +24,7 @@ import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.skillslevel.joules.MusicPlayer;
 import com.skillslevel.joules.R;
+import com.skillslevel.joules.activities.BaseActivity;
 import com.skillslevel.joules.listeners.MusicStateListener;
 import com.skillslevel.joules.utils.Helpers;
 import com.skillslevel.joules.utils.ImageUtil;

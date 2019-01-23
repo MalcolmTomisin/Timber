@@ -12,7 +12,9 @@ import android.os.PowerManager.WakeLock;
 import android.util.Log;
 import android.view.KeyEvent;
 
+import com.skillslevel.joules.MusicService;
 import com.skillslevel.joules.activities.MainActivity;
+import com.skillslevel.joules.utils.PreferencesUtil;
 
 public class MediaButtonIntentReceiver extends WakefulBroadcastReceiver {
     private static final boolean DEBUG = false;
@@ -93,7 +95,7 @@ public class MediaButtonIntentReceiver extends WakefulBroadcastReceiver {
         if (mWakeLock == null) {
             Context appContext = context.getApplicationContext();
             PowerManager pm = (PowerManager) appContext.getSystemService(Context.POWER_SERVICE);
-            mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Timber headset button");
+            mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Joules: headset button");
             mWakeLock.setReferenceCounted(false);
         }
         if (DEBUG) Log.v(TAG, "Acquiring wake lock and sending " + msg.what);
@@ -121,7 +123,7 @@ public class MediaButtonIntentReceiver extends WakefulBroadcastReceiver {
     public void onReceive(final Context context, final Intent intent) {
         final String intentAction = intent.getAction();
         if (AudioManager.ACTION_AUDIO_BECOMING_NOISY.equals(intentAction)) {
-            if (PreferencesUtility.getInstance(context).pauseEnabledOnDetach())
+            if (PreferencesUtil.getInstance(context).pauseEnabledOnDetach())
                 startService(context, MusicService.CMDPAUSE);
         } else if (Intent.ACTION_MEDIA_BUTTON.equals(intentAction)) {
             final KeyEvent event = intent.getParcelableExtra(Intent.EXTRA_KEY_EVENT);

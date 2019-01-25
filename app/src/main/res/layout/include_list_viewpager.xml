@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.naman14.timber.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.skillslevel.joules.slidingpanels.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:sothree="http://schemas.android.com/apk/res-auto"
     android:id="@+id/sliding_layout"
@@ -26,4 +26,4 @@
 
     </FrameLayout>
 
-</com.naman14.timber.slidinguppanel.SlidingUpPanelLayout>
+</com.skillslevel.joules.slidingpanels.SlidingUpPanelLayout>

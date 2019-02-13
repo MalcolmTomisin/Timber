@@ -5,19 +5,30 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.audiofx.AudioEffect;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.BaseColumns;
 import android.provider.MediaStore;
 import android.util.TypedValue;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.skillslevel.joules.MusicPlayer;
 import com.skillslevel.joules.R;
 
+import java.io.ByteArrayOutputStream;
+
 public class JoulesUtil {
+
+
+
     public static final String MUSIC_ONLY_SELECTION = MediaStore.Audio.AudioColumns.IS_MUSIC + "=1"
             + " AND " + MediaStore.Audio.AudioColumns.TITLE + " != ''";
 
@@ -31,8 +42,22 @@ public class JoulesUtil {
 
 
     public static Uri getAlbumArtUri(long paramInt) {
+        if (ContentUris.withAppendedId(Uri.parse("content://media/external/audio/albumart"), paramInt) != null)
         return ContentUris.withAppendedId(Uri.parse("content://media/external/audio/albumart"), paramInt);
+
+        //Bitmap defaultBitmapArt;
+        //ImageView imageView = null;
+        Context context = null;
+        Bitmap defaultBitmapArt = BitmapFactory.decodeResource(context.getResources(),R.drawable.ic_empty_music2);
+      // imageView.setImageResource(R.drawable.ic_empty_music2);
+     //  defaultBitmapArt = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        defaultBitmapArt.compress(Bitmap.CompressFormat.PNG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(context.getContentResolver(),defaultBitmapArt,"AlbumArt",null );
+        return Uri.parse(path);
     }
+
+
 
     public static final String makeCombinedString(final Context context, final String first,
                                                   final String second) {

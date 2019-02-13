@@ -1,4 +1,4 @@
-package com.skillslevel.joules.timely;
+package com.skillslevel.joules.timely.models;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -12,7 +12,7 @@ import android.util.Property;
 import android.view.View;
 
 import com.skillslevel.joules.R;
-import com.skillslevel.joules.timely.models.NumberUtils;
+import com.skillslevel.joules.timely.TimelyEvaluator;
 
 public class TimelyView extends View {
     private static final float RATIO = 1f;

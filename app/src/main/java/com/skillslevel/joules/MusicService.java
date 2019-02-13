@@ -1136,30 +1136,31 @@ public class MusicService extends Service {
             PendingIntent playPauseAction = null;
 
 
+            Builder builder = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                builder = new Builder(this, channelId)
+                        .setSmallIcon(R.drawable.ic_play)
+                        .setLargeIcon(artwork)
+                        .setContentIntent(clickIntent)
+                        .setContentTitle(getTrackName())
+                        .setContentText(text)
+                        .setWhen(mNotificationPostTime)
+                        .addAction(R.drawable.ic_prev_song_button,
+                                "",
+                                retrievePlaybackAction(PREVIOUS_ACTION))
+                        .addAction(playButtonResId, "",
+                                retrievePlaybackAction(TOGGLEPAUSE_ACTION))
+                        .addAction(R.drawable.ic_next_song_button,
+                                "",
+                                retrievePlaybackAction(NEXT_ACTION))
+                        .setVisibility(Notification.VISIBILITY_PUBLIC)
+                        .setStyle(
+                                new NotificationCompat.MediaStyle()
+                                        .setMediaSession(mSession.getSessionToken())
+                                        .setShowActionsInCompactView(0, 1, 2, 3))
 
-
-            android.support.v4.app.NotificationCompat.Builder builder = new android.support.v4.app.NotificationCompat.Builder(this, channelId)
-                    .setSmallIcon(R.drawable.ic_collections)
-                    .setLargeIcon(artwork)
-                    .setContentIntent(clickIntent)
-                    .setContentTitle(getTrackName())
-                    .setContentText(text)
-                    .setWhen(mNotificationPostTime)
-                    .addAction(R.drawable.ic_prev_song_button,
-                            "",
-                            retrievePlaybackAction(PREVIOUS_ACTION))
-                    .addAction(playButtonResId, "",
-                            retrievePlaybackAction(TOGGLEPAUSE_ACTION))
-                    .addAction(R.drawable.ic_next_song_button,
-                            "",
-                            retrievePlaybackAction(NEXT_ACTION))
-                    .setVisibility(Notification.VISIBILITY_PUBLIC)
-                    .setStyle(
-                            new android.support.v4.media.app.NotificationCompat.MediaStyle()
-                                    .setMediaSession(mSession.getSessionToken())
-                                    .setShowActionsInCompactView(0, 1, 2, 3))
-
-                .setColor(Palette.from(artwork).generate().getVibrantColor(Color.parseColor("#403f4d")));
+                    .setColor(getResources().getColor(R.color.notif, getTheme()));
+            }
 
             if (artwork != null && JoulesUtil.isLollipop())
                 builder.setColor(Palette.from(artwork).generate().getVibrantColor(Color.parseColor("#403f4d")));

@@ -51,6 +51,7 @@ public class MainActivity extends BaseActivity implements ATEActivityThemeCustom
     NavigationView navigationView;
     TextView songtitle, songartist;
     ImageView albumart;
+   // ImageView testAlbumart;
     String action;
     Map<String, Runnable> navigationMap = new HashMap<String, Runnable>();
     Handler navDrawerRunnable = new Handler();
@@ -143,6 +144,8 @@ public class MainActivity extends BaseActivity implements ATEActivityThemeCustom
         navigationMap.put(Constants.NAVIGATE_NOWPLAYING, navigateNowplaying);
         navigationMap.put(Constants.NAVIGATE_ALBUM, navigateAlbum);
         navigationMap.put(Constants.NAVIGATE_ARTIST, navigateArtist);
+
+       // testAlbumart = findViewById(R.id.album_art);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         panelLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);

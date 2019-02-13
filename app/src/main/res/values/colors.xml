@@ -41,4 +41,6 @@
 
     <color name="colorPrimaryDarkDefault">#37474F</color>
     <color name="colorAccentDarkDefault">#2196F3</color>
+
+    <color name="notif">#403f4d</color>
 </resources>

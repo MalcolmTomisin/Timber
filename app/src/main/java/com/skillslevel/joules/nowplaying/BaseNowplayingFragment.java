@@ -34,7 +34,7 @@ import com.skillslevel.joules.activities.BaseActivity;
 import com.skillslevel.joules.adapters.BaseQueueAdapter;
 import com.skillslevel.joules.dataloaders.QueueLoader;
 import com.skillslevel.joules.listeners.MusicStateListener;
-import com.skillslevel.joules.timely.TimelyView;
+import com.skillslevel.joules.timely.models.TimelyView;
 import com.skillslevel.joules.utils.Helpers;
 import com.skillslevel.joules.utils.JoulesUtil;
 import com.skillslevel.joules.widgets.CircularSeekBar;

@@ -1,1 +1,1 @@
-include ':app', ':coverflow', ':commons', ':core'
+include ':app', ':coverflow', ':commons', ':core', ':sample', ':library'

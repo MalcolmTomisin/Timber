@@ -81,7 +81,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:foregroundTint="#434343"
             android:padding="5dp"
-            android:src="@drawable/btn_play" />
+            android:src="@drawable/ic_dots_3" />
 
     </RelativeLayout>
 

@@ -1,6 +1,7 @@
 package com.skillslevel.joules.utils;
 
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -19,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.skillslevel.joules.R;
 
@@ -43,10 +45,10 @@ public class Helpers {
     public static class AboutDialog extends DialogFragment {
 
         String urlgooglelus = "https://plus.google.com/112282363351411543030";
-        String urlcommunity = "https://plus.google.com/112282363351411543030";
+     //   String urlcommunity = "https://plus.google.com/112282363351411543030";
         String urltwitter = "https://twitter.com/IamDexterity";
         String urlgithub = "https://github.com/MalcolmTomisin";
-        String urlsource = "https://github.com/MalcolmTomisin";
+        String urlsource = "mailto:malcolmtomisin@gmail.com";
 
         public AboutDialog() {
         }
@@ -64,7 +66,7 @@ public class Helpers {
             TextView twitter = (TextView) aboutBodyView.findViewById(R.id.twitter);
             TextView github = (TextView) aboutBodyView.findViewById(R.id.github);
             TextView source = (TextView) aboutBodyView.findViewById(R.id.source);
-            TextView community = (TextView) aboutBodyView.findViewById(R.id.feature_request);
+         //   TextView community = (TextView) aboutBodyView.findViewById(R.id.feature_request);
 
             TextView dismiss = (TextView) aboutBodyView.findViewById(R.id.dismiss_dialog);
             dismiss.setOnClickListener(new View.OnClickListener() {
@@ -104,20 +106,24 @@ public class Helpers {
                 }
 
             });
+//            community.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent i = new Intent(Intent.ACTION_VIEW);
+//                    i.setData(Uri.parse(urlcommunity));
+//                    startActivity(i);
+//                }
+//            });
             source.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    Intent i = new Intent(Intent.ACTION_SENDTO);
                     i.setData(Uri.parse(urlsource));
-                    startActivity(i);
-                }
-            });
-            community.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent i = new Intent(Intent.ACTION_VIEW);
-                    i.setData(Uri.parse(urlcommunity));
-                    startActivity(i);
+                    try {
+                        startActivity(i);
+                    } catch (ActivityNotFoundException e) {
+                        Toast.makeText(getContext(),"Email App not found",Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
             try {

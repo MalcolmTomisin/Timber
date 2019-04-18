@@ -84,9 +84,9 @@ public class PlaylistDetailActivity extends BaseThemedActivity implements ATEAct
         playlistsMap.put(Constants.NAVIGATE_PLAYLIST_TOPTRACKS, playlistToptracks);
         playlistsMap.put(Constants.NAVIGATE_PLAYLIST_USERCREATED, playlistUsercreated);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-        blurFrame = (ImageView) findViewById(R.id.blurFrame);
-        playlistname = (TextView) findViewById(R.id.name);
+        recyclerView = findViewById(R.id.recyclerview);
+        blurFrame = findViewById(R.id.blurFrame);
+        playlistname = findViewById(R.id.name);
         foreground = findViewById(R.id.foreground);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -94,7 +94,7 @@ public class PlaylistDetailActivity extends BaseThemedActivity implements ATEAct
         setAlbumart();
 
         if (JoulesUtil.isLollipop() && PreferencesUtil.getInstance(this).getAnimations()) {
-            getWindow().getEnterTransition().addListener((android.transition.Transition.TransitionListener) new EnterTransitionListener());
+            getWindow().getEnterTransition().addListener( new EnterTransitionListener());
         } else {
             setUpSongs();
         }
@@ -225,7 +225,7 @@ public class PlaylistDetailActivity extends BaseThemedActivity implements ATEAct
         }
     }
 
-    private class EnterTransitionListener extends SimpleTransitionListener {
+    private class EnterTransitionListener implements android.transition.Transition.TransitionListener {
 
         @TargetApi(21)
         public void onTransitionEnd(Transition paramTransition) {
@@ -235,5 +235,29 @@ public class PlaylistDetailActivity extends BaseThemedActivity implements ATEAct
         public void onTransitionStart(Transition paramTransition) {
         }
 
+        @Override
+        public void onTransitionStart(android.transition.Transition transition) {
+
+        }
+
+        @Override
+        public void onTransitionEnd(android.transition.Transition transition) {
+            setUpSongs();
+        }
+
+        @Override
+        public void onTransitionCancel(android.transition.Transition transition) {
+
+        }
+
+        @Override
+        public void onTransitionPause(android.transition.Transition transition) {
+
+        }
+
+        @Override
+        public void onTransitionResume(android.transition.Transition transition) {
+
+        }
     }
 }

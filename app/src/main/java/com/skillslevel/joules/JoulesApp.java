@@ -1,6 +1,7 @@
 package com.skillslevel.joules;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.afollestad.appthemeengine.ATE;
 import com.nostra13.universalimageloader.core.ImageLoader;

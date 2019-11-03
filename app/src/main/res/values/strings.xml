@@ -67,8 +67,8 @@
     <string name="choose_theme_throughout">Choose a theme to be used throughout the app.</string>
     <string name="choose_start_page">Choose the start page to be displayed on launch.</string>
     <string name="start_page">Start page</string>
-    <string name="artist_in_grid">Artists in Grid</string>
-    <string name="toggle_artists_grid">Toggle for displaying artists in a 2x2 grid.</string>
+    <string name="artist_in_grid">Artists in List</string>
+    <string name="toggle_artists_grid">Toggle for displaying artists in a List.</string>
     <string name="toggle_system_animations">Toggle for system animations throughout the app.</string>
     <string name="system_animations">System animations</string>
     <string name="toggle_animations">Toggle for Transition animation throughout the app.</string>

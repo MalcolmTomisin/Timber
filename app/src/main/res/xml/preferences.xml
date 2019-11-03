@@ -24,11 +24,11 @@
             android:title="@string/system_animations"
             app:ateKey_pref_checkBox="?ate_key" />
 
-        <!--<SwitchPreference-->
-        <!--android:defaultValue="false"-->
-        <!--android:key="toggle_artist_grid"-->
-        <!--android:summary="@string/toggle_artists_grid"-->
-        <!--android:title="@string/artist_in_grid"/>-->
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="toggle_artist_grid"
+            android:summary="@string/toggle_artists_grid"
+            android:title="@string/artist_in_grid" />
 
         <!--<ListPreference-->
         <!--android:defaultValue="light"-->

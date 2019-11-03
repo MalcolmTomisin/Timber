@@ -147,15 +147,15 @@ public class MainActivity extends BaseActivity implements ATEActivityThemeCustom
 
        // testAlbumart = findViewById(R.id.album_art);
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        panelLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+        panelLayout = findViewById(R.id.sliding_layout);
 
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         View header = navigationView.inflateHeaderView(R.layout.nav_header);
 
-        albumart = (ImageView) header.findViewById(R.id.album_art);
-        songtitle = (TextView) header.findViewById(R.id.song_title);
-        songartist = (TextView) header.findViewById(R.id.song_artist);
+        albumart = header.findViewById(R.id.album_art);
+        songtitle = header.findViewById(R.id.song_title);
+        songartist = header.findViewById(R.id.song_artist);
 
         setPanelSlideListeners(panelLayout);
 
@@ -208,7 +208,7 @@ public class MainActivity extends BaseActivity implements ATEActivityThemeCustom
             loadEverything();
         } else {
             if (AllPermissions.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                Snackbar.make(panelLayout, "SongsPro will need to read external storage to display songs on your device.",
+                Snackbar.make(panelLayout, "Joules will need to read external storage to display songs on your device.",
                         Snackbar.LENGTH_INDEFINITE)
                         .setAction("OK", new View.OnClickListener() {
                             @Override
@@ -314,7 +314,7 @@ public class MainActivity extends BaseActivity implements ATEActivityThemeCustom
                 break;
             case R.id.nav_help:
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                Uri data = Uri.parse("mailto:spandanjoshi1997@gmail.com");
+                Uri data = Uri.parse("mailto:malcolmtomisin@gmail.com");
                 intent.setData(data);
                 startActivity(intent);
                 break;

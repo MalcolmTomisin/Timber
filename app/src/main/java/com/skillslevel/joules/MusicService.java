@@ -44,6 +44,7 @@ import android.provider.MediaStore.Audio.AlbumColumns;
 import android.provider.MediaStore.Audio.AudioColumns;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.media.MediaMetadataCompat;
+import android.support.v4.media.session.MediaButtonReceiver;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v7.graphics.Palette;
@@ -160,6 +161,7 @@ public class MusicService extends Service {
         private WakeLock mWakeLock;
         private AlarmManager mAlarmManager;
         private PendingIntent mShutdownIntent;
+    private PendingIntent mMediaButton;
         private boolean mShutdownScheduled;
         private NotificationManagerCompat mNotificationManager;
         private Cursor mCursor;
@@ -327,6 +329,9 @@ public class MusicService extends Service {
 
             mAlarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
             mShutdownIntent = PendingIntent.getService(this, 0, shutdownIntent, 0);
+            if (!mSession.isActive())
+                mSession.setMediaButtonReceiver(mMediaButton);
+
 
             scheduleDelayedShutdown();
 
@@ -430,6 +435,8 @@ public class MusicService extends Service {
 
                 handleCommandIntent(intent);
             }
+
+            MediaButtonReceiver.handleIntent(mSession, intent);
 
             scheduleDelayedShutdown();
 
@@ -1020,11 +1027,11 @@ public class MusicService extends Service {
             intent.putExtra("track", getTrackName());
             intent.putExtra("playing", isPlaying());
 
-            sendStickyBroadcast(intent);
+            sendBroadcast(intent);
 
             final Intent musicIntent = new Intent(intent);
             musicIntent.setAction(what.replace(TIMBER_PACKAGE_NAME, MUSIC_PACKAGE_NAME));
-            sendStickyBroadcast(musicIntent);
+            sendBroadcast(musicIntent);
 
             if (what.equals(META_CHANGED)) {
 
@@ -1125,7 +1132,10 @@ public class MusicService extends Service {
 
             String channelId = "mplayer_Notif";
             CharSequence channelName = "mPlayer";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            int importance = 0;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                importance = NotificationManager.IMPORTANCE_LOW;
+            }
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                 NotificationChannel notificationChannel = new NotificationChannel(channelId, channelName, importance);
                 notificationChannel.setLockscreenVisibility(1);
